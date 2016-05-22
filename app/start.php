@@ -1,6 +1,7 @@
 <?php
 
 use Slim\Slim;
+use Noodlehaus\Config;
 
 session_cache_limiter(false);
 session_start();
@@ -17,7 +18,7 @@ $app = new Slim([
 ]);
 
 $app->configureMode($app->config('mode'), function() use ($app){
-  $app->config = ['test' => true];
+  $app->config = Config::load(INC_ROOT . "app\config\{$app->mode}.php");
 });
 
-var_dump($app->config);
+echo $app->config->('db.driver');
