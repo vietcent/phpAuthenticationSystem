@@ -3,6 +3,8 @@
 use Slim\Slim;
 use Noodlehaus\Config;
 
+use CodeCourse\User\User;
+
 session_cache_limiter(false);
 session_start();
 
@@ -21,4 +23,10 @@ $app->configureMode($app->config('mode'), function() use ($app){
   $app->config = Config::load(INC_ROOT . "app\config\{$app->mode}.php");
 });
 
-echo $app->config->('db.driver');
+require 'database.php';
+
+$app->container->set('user', function(){
+  return new User;
+});
+
+var_dump($app->user);

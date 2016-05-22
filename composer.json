@@ -1,4 +1,9 @@
 {
+  "autoload":{
+    "psr-4":{
+      "CodeCourse\\": "app/CodeCourse"
+    }
+  },
     "require": {
         "phpmailer/phpmailer": "^5.2",
         "slim/views": "^0.1.3",
