@@ -1,4 +1,4 @@
 <?php
 $app->('/', function() use ($app){
-  echo 'Hello!';
+  $app->render('home.php');
 })->name('home');
